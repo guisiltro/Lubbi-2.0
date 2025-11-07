@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LUBBI - Robô de Triagem Inteligente</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Efeito de partículas no fundo -->
+    <div class="particles-overlay"></div>
+
+    <!-- Barra de progresso do scroll -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Botões de Acessibilidade -->
+    <div class="accessibility-buttons">
+        <button class="access-btn" id="colorBlindBtn" title="Modo Alto Contraste">
+            <i class="fas fa-eye"></i>
+        </button>
+        <button class="access-btn" id="resetThemeBtn" title="Tema Original">
+            <i class="fas fa-sync"></i>
+        </button>
+    </div>
+
+    <!-- ---------- LOGIN OVERLAY ---------- -->
+    <div class="login-overlay" id="loginContainer">
+        <div class="login-box" data-aos="zoom-in">
+            <h2>ACESSO LUBBI</h2>
+            <input type="text" id="username" placeholder="Digite seu nome">
+            <button class="btn-login" id="btnLogin">INICIAR SISTEMA</button>
+            <p class="login-note">Digite qualquer nome para continuar</p>
+        </div>
+    </div>
+
+    <!-- Header fixo melhorado -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="/Captura de tela 2025-11-06 150936.png" alt="Lubbi Logo" class="logo-img" id="logo-img">
+                <span class="logo-text">LUBBI</span>
+            </div>
+            <nav class="top-nav">
+                <div class="nav-links">
+                    <a href="#top" class="nav-link active">
+                        <i class="fas fa-home"></i>
+                        <span></span>
+                    </a>
+                    <a href="#carousel" class="nav-link">
+                        <i class="fas fa-images"></i>
+                        <span></span>
+                    </a>
+                    <a href="#intro" class="nav-link">
+                        <i class="fas fa-info-circle"></i>
+                        <span></span>
+                    </a>
+                    <a href="#funcionalidades" class="nav-link">
+                        <i class="fas fa-robot"></i>
+                        <span></span>
+                    </a>
+                    <a href="#chatbot" class="nav-link">
+                        <i class="fas fa-comments"></i>
+                        <span></span>
+                    </a>
+                    <a href="#integrantes" class="nav-link">
+                        <i class="fas fa-users"></i>
+                        <span></span>
+                    </a>
+                    <a href="#votacao" class="nav-link">
+                        <i class="fas fa-vote-yea"></i>
+                        <span></span>
+                    </a>
+                    <a href="#avaliacao" class="nav-link">
+                        <i class="fas fa-star"></i>
+                        <span></span>
+                    </a>
+                </div>
+            </nav>
+            <button class="nav-toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Navegação lateral em formato de semáforo -->
+    <div class="traffic-light-nav">
+        <a href="#top" data-title="Home" class="active"></a>
+        <a href="#carousel" data-title="Galeria"></a>
+        <a href="#intro" data-title="Sobre"></a>
+        <a href="#funcionalidades" data-title="Funcionalidades"></a>
+        <a href="#chatbot" data-title="Chatbot"></a>
+        <a href="#integrantes" data-title="Equipe"></a>
+        <a href="#votacao" data-title="Votação"></a>
+        <a href="#avaliacao" data-title="Avaliar"></a>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero" id="top">
+        <div class="hero-content">
+            <small>ROBÔ DE TRIAGEM INTELIGENTE</small>
+            <h1>LUBBI</h1>
+            <p>
+                O futuro da triagem médica está aqui. Lubbi combina inteligência artificial avançada 
+                com sensores de última geração para oferecer diagnósticos precisos e rápidos.
+            </p>
+            
+            <!-- Stats da Home -->
+            <div class="hero-stats" data-aos="fade-up">
+                <div class="stat-item">
+                    <div class="stat-value" id="stat-visitors">0</div>
+                    <div class="stat-label">Visitantes</div>
+                </div>
+
+                <div class="stat-item">
+                    <div class="stat-value" id="stat-time">45Seg</div>
+                    <div class="stat-label">Tempo Médio</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Carrossel de Imagens Automático -->
+    <section class="carousel-section" id="carousel">
+        <div class="carousel-container">
+            <div id="imageCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4000">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#imageCarousel" data-bs-slide-to="0" class="active"></button>
+                    <button type="button" data-bs-target="#imageCarousel" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#imageCarousel" data-bs-slide-to="2"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" class="d-block w-100" alt="Robô de triagem 1">
+                        <div class="carousel-caption">
+                            <h5>Tecnologia Avançada</h5>
+                            <p>Interface moderna e intuitiva para profissionais de saúde</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" class="d-block w-100" alt="Robô de triagem 2">
+                        <div class="carousel-caption">
+                            <h5>Precisão nos Diagnósticos</h5>
+                            <p>Sensores de alta precisão para medições confiáveis</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" class="d-block w-100" alt="Robô de triagem 3">
+                        <div class="carousel-caption">
+                            <h5>Mobilidade Autônoma</h5>
+                            <p>Navegação inteligente em ambientes hospitalares</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Introdução -->
+    <section id="intro">
+        <h2 class="section-title">REVOLUCIONANDO A TRIAGEM MÉDICA</h2>
+        <p>
+            O <span class="accent">Lubbi</span> é um robô de triagem de última geração que utiliza inteligência artificial 
+            e sensores avançados para avaliar pacientes de forma rápida e precisa. 
+            Com tecnologia de ponta, ele é capaz de detectar sintomas, medir sinais vitais 
+            e priorizar casos de emergência com eficiência nunca antes vista.
+        </p>
+        <p>
+            Desenvolvido para hospitais, clínicas e unidades de pronto atendimento, 
+            o Lubbi otimiza fluxos de trabalho e melhora significativamente a experiência do paciente.
+        </p>
+    </section>
+
+    <!-- Seção do Robô Interativo LUBBI - Layout Centralizado -->
+    <section id="funcionalidades" class="robot-interactive-section">
+        <div class="section-header">
+            <h2 class="section-title">ROBÔ LUBBI INTERATIVO</h2>
+            <p class="section-subtitle">Clique em cada funcionalidade para ver o LUBBI em ação</p>
+        </div>
+        
+        <div class="robot-layout-container">
+            <!-- ROBÔ CENTRALIZADO -->
+            <div class="robot-center">
+                <div class="robot-container">
+                    <div class="robot" id="robot">
+                        <div class="head" id="robotHead">
+                            <div class="face">
+                                <div class="eyes">
+                                    <div class="eye"></div>
+                                    <div class="eye"></div>
+                                </div>
+                                <div class="mouth"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="arms">
+                            <div class="arm arm-left">
+                                <div class="upper-arm" id="leftArm"></div>
+                                <div class="lower-arm"></div>
+                                <div class="hand hand-left" id="leftHand">
+                                    <div class="sensor-indicator" id="leftSensor">
+                                        <i class="fas fa-heartbeat"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="arm arm-right">
+                                <div class="upper-arm" id="rightArm"></div>
+                                <div class="lower-arm"></div>
+                                <div class="hand hand-right" id="rightHand">
+                                    <div class="sensor-indicator" id="rightSensor">
+                                        <i class="fas fa-thermometer-half"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="body" id="robotBody">
+                            <div class="torso">
+                                <div class="touch-screen" id="touchScreen">
+                                    <div class="screen-title">SISTEMA LUBBI</div>
+                                    <div class="sensor-data">
+                                        <div>TEMP: <span class="data-value" id="tempValue">36.5°C</span></div>
+                                        <div>BPM: <span class="data-value" id="bpmValue">72</span></div>
+                                    </div>
+                                    <div class="screen-status" id="screenStatus">AGUARDANDO COMANDO</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mobility-system">
+                            <div class="wheel-assembly">
+                                <div class="wheel-cover" id="leftWheelCover"></div>
+                                <div class="wheel" id="leftWheel">
+                                    <div class="wheel-tread"></div>
+                                    <div class="wheel-hub"></div>
+                                </div>
+                            </div>
+                            <div class="wheel-assembly">
+                                <div class="wheel-cover" id="rightWheelCover"></div>
+                                <div class="wheel" id="rightWheel">
+                                    <div class="wheel-tread"></div>
+                                    <div class="wheel-hub"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Indicador de ação ativa -->
+                <div class="action-indicator" id="actionIndicator">
+                    <div class="indicator-glow"></div>
+                    <div class="indicator-text" id="indicatorText">Funcionalidade Ativa</div>
+                </div>
+            </div>
+            
+            <!-- CARDS AO REDOR DO ROBÔ -->
+            <div class="cards-circle-layout">
+                <!-- Card 1 - Sensor de Temperatura -->
+                <div class="feature-card-circle" data-feature="sensor-temp" data-target="rightHand,rightSensor">
+                    <div class="card-circle-content">
+                        <div class="card-icon">
+                            <i class="fas fa-thermometer-half"></i>
+                        </div>
+                        <h3 class="card-title">Sensor de Temperatura</h3>
+                        <div class="card-preview">
+                            <p>Medição precisa sem contato</p>
+                        </div>
+                        <div class="card-full">
+                            <div class="card-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-check"></i> Precisão de ±0.1°C
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-check"></i> Medição sem contato
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-check"></i> Resposta em 2 segundos
+                                </div>
+                            </div>
+                            <p class="card-description">
+                                Sensor infravermelho de alta precisão para medição de temperatura corporal sem contato, 
+                                utilizando tecnologia de última geração para garantir precisão e higiene.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card-connector"></div>
+                </div>
+                
+                <!-- Card 2 - Sensor Cardíaco -->
+                <div class="feature-card-circle" data-feature="sensor-bpm" data-target="leftHand,leftSensor">
+                    <div class="card-circle-content">
+                        <div class="card-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <h3 class="card-title">Sensor Cardíaco</h3>
+                        <div class="card-preview">
+                            <p>Monitoramento cardíaco</p>
+                        </div>
+                        <div class="card-full">
+                            <div class="card-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-check"></i> Monitoramento contínuo
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-check"></i> Precisão de ±2 BPM
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-check"></i> Detecção de arritmias
+                                </div>
+                            </div>
+                            <p class="card-description">
+                                Sensor óptico de batimentos cardíacos com tecnologia de fotopletismografia 
+                                para monitoramento preciso e detecção de possíveis anomalias.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card-connector"></div>
+                </div>
+                
+                <!-- Card 3 - Tela Touchscreen -->
+                <div class="feature-card-circle" data-feature="touchscreen" data-target="robotBody,touchScreen">
+                    <div class="card-circle-content">
+                        <div class="card-icon">
+                            <i class="fas fa-tablet-alt"></i>
+                        </div>
+                        <h3 class="card-title">Tela Touchscreen</h3>
+                        <div class="card-preview">
+                            <p>Interface interativa</p>
+                        </div>
+                        <div class="card-full">
+                            <div class="card-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-check"></i> Display LCD 7"
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-check"></i> Toque multiponto
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-check"></i> Interface intuitiva
+                                </div>
+                            </div>
+                            <p class="card-description">
+                                Interface touch de 7 polegadas para visualização de dados em tempo real 
+                                e interação direta com o sistema LUBBI.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card-connector"></div>
+                </div>
+                
+                <!-- Card 4 - Sistema de Locomoção -->
+                <div class="feature-card-circle" data-feature="wheels" data-target="leftWheel,rightWheel,leftWheelCover,rightWheelCover">
+                    <div class="card-circle-content">
+                        <div class="card-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3 class="card-title">Sistema de Locomoção</h3>
+                        <div class="card-preview">
+                            <p>Navegação autônoma</p>
+                        </div>
+                        <div class="card-full">
+                            <div class="card-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-check"></i> 4 rodas omnidirecionais
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-check"></i> Navegação por SLAM
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-check"></i> Autonomia de 8 horas
+                                </div>
+                            </div>
+                            <p class="card-description">
+                                Rodas omnidirecionais com tração independente para navegação autônoma 
+                                em ambientes hospitalares complexos.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card-connector"></div>
+                </div>
+                
+                <!-- Card 5 - Diagnóstico por IA -->
+                <div class="feature-card-circle" data-feature="ai-diagnosis" data-target="robotHead">
+                    <div class="card-circle-content">
+                        <div class="card-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3 class="card-title">Diagnóstico por IA</h3>
+                        <div class="card-preview">
+                            <p>Análise inteligente</p>
+                        </div>
+                        <div class="card-full">
+                            <div class="card-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-check"></i> Rede neural profunda
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-check"></i> Precisão de 98.7%
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-check"></i> Atualização em tempo real
+                                </div>
+                            </div>
+                            <p class="card-description">
+                                Algoritmos de inteligência artificial para análise e diagnóstico automatizado 
+                                com alta precisão e confiabilidade.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card-connector"></div>
+                </div>
+                
+                <!-- Card 6 - Sistema de Comunicação -->
+                <div class="feature-card-circle" data-feature="communication" data-target="robotHead">
+                    <div class="card-circle-content">
+                        <div class="card-icon">
+                            <i class="fas fa-broadcast-tower"></i>
+                        </div>
+                        <h3 class="card-title">Comunicação</h3>
+                        <div class="card-preview">
+                            <p>Conexão em tempo real</p>
+                        </div>
+                        <div class="card-full">
+                            <div class="card-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-check"></i> Integração com prontuários
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-check"></i> Alertas automáticos
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-check"></i> Comunicação segura
+                                </div>
+                            </div>
+                            <p class="card-description">
+                                Sistema de comunicação em tempo real com sistemas hospitalares 
+                                e profissionais de saúde para coordenação eficiente.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card-connector"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção: Chatbot de Suporte -->
+    <section class="chatbot-section" id="chatbot">
+        <div class="container">
+            <h2 class="section-title">🤖 Assistente Virtual LUBBI</h2>
+            <div class="chatbot-container">
+                <div class="chatbot-header">
+                    <div class="chatbot-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="chatbot-info">
+                        <h3>LUBBI Assistant</h3>
+                        <span class="status online">Online</span>
+                    </div>
+                </div>
+                <div class="chatbot-messages" id="chatbotMessages">
+                    <div class="message bot-message">
+                        <p>Olá! Sou o assistente virtual do LUBBI. Como posso ajudá-lo hoje? Posso explicar sobre funcionalidades, sensores, ou tirar qualquer dúvida sobre o sistema LUBBI!</p>
+                    </div>
+                </div>
+                <div class="chatbot-input">
+                    <input type="text" id="chatbotInput" placeholder="Digite sua mensagem...">
+                    <button id="sendMessage">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+<!-- Seção de Integrantes -->
+<section class="team-section" id="integrantes">
+    <div class="container">
+        <div class="team-header" data-aos="fade-up">
+            <h2 class="section-title">Nossa Equipe</h2>
+            <p class="section-subtitle">Conheça os talentosos profissionais por trás do projeto LUBBI</p>
+            <div class="team-divider"></div>
+        </div>
+        
+        <div class="team-grid-expanded">
+            <!-- Integrante 1 -->
+            <div class="team-member-expanded" data-aos="fade-up" data-aos-delay="100">
+                <div class="member-card">
+                    <div class="member-image-container">
+                        <div class="member-image">
+                            <img src="Guilherme.png" alt="Guilherme Domingues" 
+                                 onerror="this.src='https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80'">
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Guilherme Domingues</h3>
+                        <p class="member-role">Full-Stack Developer</p>
+                        <div class="member-divider"></div>
+                        <p class="member-bio">Tenho 16 anos e fui responsável pelo desenvolvimento full-stack do projeto LUBBI, integrando frontend e backend para criar uma experiência completa.</p>
+                        <div class="member-tags">
+                            <span class="member-tag">Frontend</span>
+                            <span class="member-tag">Backend</span>
+                            <span class="member-tag">UI/UX</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Integrante 2 -->
+            <div class="team-member-expanded" data-aos="fade-up" data-aos-delay="200">
+                <div class="member-card">
+                    <div class="member-image-container">
+                        <div class="member-image">
+                            <img src="Pires.png" alt="Guilherme Pires"
+                                 onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80'">
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Guilherme Pires</h3>
+                        <p class="member-role">Backend & Eletrônica</p>
+                        <div class="member-divider"></div>
+                        <p class="member-bio">Com 17 anos, desenvolvi o backend do sistema e fui responsável por toda a parte elétrica do robô LUBBI, garantindo seu funcionamento adequado.</p>
+                        <div class="member-tags">
+                            <span class="member-tag">Backend</span>
+                            <span class="member-tag">Eletrônica</span>
+                            <span class="member-tag">Arduino</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Integrante 3 -->
+            <div class="team-member-expanded" data-aos="fade-up" data-aos-delay="300">
+                <div class="member-card">
+                    <div class="member-image-container">
+                        <div class="member-image">
+                            <img src="Thiago.png" alt="Thiago"
+                                 onerror="this.src='https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80'">
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Thiago</h3>
+                        <p class="member-role">Desenvolvedor</p>
+                        <div class="member-divider"></div>
+                        <p class="member-bio">Tenho 17 anos e estou no terceiro ano da FIAP SCHOOL. Como desenvolvedor do LUBBI, contribuí para a criação e implementação das funcionalidades do sistema.</p>
+                        <div class="member-tags">
+                            <span class="member-tag">Desenvolvimento</span>
+                            <span class="member-tag">Sistemas</span>
+                            <span class="member-tag">FIAP</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Integrante 4 -->
+            <div class="team-member-expanded" data-aos="fade-up" data-aos-delay="400">
+                <div class="member-card">
+                    <div class="member-image-container">
+                        <div class="member-image">
+                            <img src="Nicolas.png" alt="Nicolas"
+                                 onerror="this.src='https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80'">
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Nicolas</h3>
+                        <p class="member-role">Animação 3D & Suporte</p>
+                        <div class="member-divider"></div>
+                        <p class="member-bio">Com 16 anos e cursando o 2º ano do Ensino Médio Técnico na FIAP School, sou responsável pela animação 3D e auxílio geral no desenvolvimento do LUBBI.</p>
+                        <div class="member-tags">
+                            <span class="member-tag">3D</span>
+                            <span class="member-tag">Animação</span>
+                            <span class="member-tag">Design</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Integrante 5 -->
+            <div class="team-member-expanded" data-aos="fade-up" data-aos-delay="500">
+                <div class="member-card">
+                    <div class="member-image-container">
+                        <div class="member-image">
+                            <img src="Matheus.png" alt="Matheus"
+                                 onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80'">
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Matheus</h3>
+                        <p class="member-role">Designer</p>
+                        <div class="member-divider"></div>
+                        <p class="member-bio">Tenho 17 anos e curso o 2º ano do Ensino Médio Técnico na FIAP School. Como designer do projeto LUBBI, crio interfaces visuais atraentes e funcionais.</p>
+                        <div class="member-tags">
+                            <span class="member-tag">Design</span>
+                            <span class="member-tag">UI/UX</span>
+                            <span class="member-tag">Visual</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- NOVA INTEGRANTE: Madu Marcondes -->
+            <div class="team-member-expanded" data-aos="fade-up" data-aos-delay="600">
+                <div class="member-card">
+                    <div class="member-image-container">
+                        <div class="member-image">
+                            <img src="Madu.png" alt="Madu Marcondes"
+                                 onerror="this.src='https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80'">
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Madu Marcondes</h3>
+                        <p class="member-role">Orientadora & Engenheira Mecatrônica</p>
+                        <div class="member-divider"></div>
+                        <p class="member-bio">Engenheira Mecatrônica, atua na orientação de projetos de robótica, modelagem e inovação. Apaixonada por transformar ideias em soluções reais, une visão técnica e criativa na formação de jovens protagonistas, com foco em liderança, colaboração e impacto social.</p>
+                        <div class="member-tags">
+                            <span class="member-tag">Robótica</span>
+                            <span class="member-tag">Mecatrônica</span>
+                            <span class="member-tag">Orientação</span>
+                            <span class="member-tag">Inovação</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="team-footer" data-aos="fade-up">
+            <p class="team-inspiration">Juntos, criamos o futuro da triagem médica inteligente</p>
+        </div>
+    </div>
+</section>
+
+
+
+    <!-- Seção de Avaliação do LUBBI -->
+    <section class="voting-section" id="avaliacao">
+        <div class="voting-container">
+            <div class="voting-card" data-aos="zoom-in">
+                <div class="voting-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <h2>Avalie o LUBBI</h2>
+                <p>
+                    Sua opinião é muito importante para nós! Avalie sua experiência com o LUBBI 
+                    e nos ajude a melhorar ainda mais nossos serviços.
+                </p>
+                
+                <div class="rating-stars">
+                    <span class="rating-star" data-rating="1">★</span>
+                    <span class="rating-star" data-rating="2">★</span>
+                    <span class="rating-star" data-rating="3">★</span>
+                    <span class="rating-star" data-rating="4">★</span>
+                    <span class="rating-star" data-rating="5">★</span>
+                </div>
+                
+                <div class="rating-form">
+                    <textarea id="ratingComment" placeholder="Deixe seu comentário (opcional)"></textarea>
+                    <button class="btn-submit-rating" id="submitRating">Enviar Avaliação</button>
+                </div>
+                
+                <div class="reviews-container" id="reviewsContainer">
+                    <!-- Avaliações serão carregadas via JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="/" alt="Lubbi Logo" class="footer-logo-img" id="footer-logo-img">
+                LUBBI
+            </div>
+            <nav class="footer-nav">
+                <a href="#top">Home</a>
+                <a href="#carousel">Galeria</a>
+                <a href="#intro">Sobre</a>
+                <a href="#funcionalidades">Funcionalidades</a>
+                <a href="#chatbot">Chatbot</a>
+                <a href="#integrantes">Equipe</a>
+                <a href="#votacao">Votação</a>
+                <a href="#avaliacao">Avaliar</a>
+            </nav>
+            <div class="copyright">
+                &copy; 2023 LUBBI TECHNOLOGIES. Todos os direitos reservados.<br>
+                Revolucionando a triagem médica com inteligência artificial.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
